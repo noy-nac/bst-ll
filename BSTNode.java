@@ -118,7 +118,8 @@ public class BSTNode<T> {
             leftStrLst.get(i).add(rightStrLst.get(i)); 
         }
 
-        int padLen = (3 * leftTgtLen + rightTgtLen - 2 * data.toString().length()+2)/4;
+        int padLen = (3 * leftTgtLen + rightTgtLen - 2 * data.toString().length())/4;
+        //int padLen = leftTgtLen - data.toString().length()/2;
 
         SparsePaddedString top = new SparsePaddedString();
         top.add(padLen, data.toString());

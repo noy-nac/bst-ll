@@ -23,6 +23,7 @@ public class BST<T extends Comparable<T>> {
     public T add(T val) {
         if(root.getData() == null) {
             root.setData(val);
+            size++;
             return val;
         }
 
@@ -87,32 +88,57 @@ public class BST<T extends Comparable<T>> {
         return size;
     }
 
-    public static void main(String[] args) {
-        /**/
-        Random rand = new Random();
+    //
+
+    public static void randInsert(int n, Random rand) {
+        BST<Integer> bst = new BST<>();
+
+        for(int i = 0; i < n; i++) {
+            bst.add(rand.nextInt(2*n));
+        }
+        System.out.println(bst.toString());
+        System.out.println("Total Elements: " + bst.getSize());
+    }
+
+    public static void seqInsert(int n) {
+        BST<Integer> bst = new BST<>();
+
+        for(int i = 0; i < n; i++) {
+            bst.add(i);
+        }
+        System.out.println(bst.toString());
+        System.out.println("Total Elements: " + bst.getSize());
+    }
+
+    public static void myArrInsert() {
+        int[] arr = {5, 3, 2, 9, 6, 3, 8, 1};
 
         BST<Integer> bst = new BST<>();
 
-        for(int i = 0; i < 1000; i++) {
-            bst.add(rand.nextInt(100));
+        for(int i = 0; i < arr.length; i++) {
+            bst.add(arr[i]);
         }
         System.out.println(bst.toString());
-        System.out.println("Size: " + bst.getSize());
-        /**/
+        System.out.println("Total Elements: " + bst.getSize());
+    }
 
-        /*Random rand = new Random();
+    public static void main(String[] args) {
+        Random rand = new Random();
 
-        BST<String> bst = new BST<>();
+        // randomly inserts elements into a binary tree and prints the resulting tree
+        // n is the number of elements we attempt to insert
+        randInsert(20, rand);
+        randInsert(40, rand);
+        randInsert(60, rand);
+        randInsert(80, rand);
+        randInsert(100, rand);
 
-        for(int i = 0; i < 50; i++) {
-            String s = "";
-            for(int j = 0; j < 3; j++) {
-                s += (char)(rand.nextInt(26) + 97);
-            }
-            bst.add(s);
-        }
-        System.out.println(bst.toString());
-        System.out.println("Size: " + bst.getSize());
-        */
+        // inserts elements sequencially up to n and prints the resulting tree
+        //seqInsert(5);
+        //seqInsert(10);
+        //seqInsert(15);
+        //seqInsert(20);
+
+        //myArrInsert();
     }
 }
